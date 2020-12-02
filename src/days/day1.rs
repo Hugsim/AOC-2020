@@ -1,7 +1,7 @@
 use crate::util::*;
 
 pub fn eval() {
-    let contents = read_file_to_vec::<i32>("src/days/day1/input");
+    let contents = read_file_to_vec::<i32>("src/days/input/1");
 
     for x in &contents {
         for y in &contents {

@@ -1,7 +1,7 @@
 use std::fs;
 
 pub fn read_file_to_string(file: &str) -> String {
-    fs::read_to_string(file).expect(format!("Couldn't open {}", file))
+    fs::read_to_string(file).expect(&format!("Couldn't open {}", file)[..])
 }
 
 pub fn read_file_to_vec<T>(file: &str) -> Vec<T> 
