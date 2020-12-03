@@ -6,5 +6,5 @@ mod util;
 
 
 fn main() {
-    days::day2::eval();
+    days::day3::eval();
 }

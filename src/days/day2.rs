@@ -51,5 +51,3 @@ pub fn eval() {
     let num = contents.into_iter().map(|pwp| pwp.validate_part2()).filter(|&b| b).count();
     sprint(num);
 }
-
-// 350 low
