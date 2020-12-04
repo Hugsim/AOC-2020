@@ -17,7 +17,7 @@ pub fn eval() {
     sprint(result);
 }
 
-pub fn count_trees(x_slope: usize, y_slope: usize, map: &Vec<Vec<Tile>>) -> i64 {
+pub fn count_trees(x_slope: usize, y_slope: usize, map: &[Vec<Tile>]) -> i64 {
     let mut x = 0;
     let mut y = 0;
 
