@@ -13,7 +13,7 @@ impl FromStr for PasswordPolicy {
     type Err = std::num::ParseIntError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let coords: Vec<&str> = s.split(|c: char| ['-', ':', ' '].contains(&c))
+        let coords: Vec<&str> = s.split(|c| ['-', ':', ' '].contains(&c))
                                  .filter(|s| s != &"")
                                  .collect();
 

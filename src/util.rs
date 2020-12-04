@@ -1,5 +1,4 @@
 use std::fs;
-
 use std::str::FromStr;
 
 pub fn read_file_to_string(file: &str) -> String {
