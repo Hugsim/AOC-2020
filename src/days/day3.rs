@@ -8,14 +8,12 @@ pub enum Tile {
 
 pub fn eval() {
     let map = make_tile_map();
-    
-    let result = 
-        count_trees(1, 1, &map) * 
-        count_trees(3, 1, &map) * 
-        count_trees(5, 1, &map) * 
-        count_trees(7, 1, &map) * 
-        count_trees(1, 2, &map);
 
+    let result = count_trees(1, 1, &map)
+        * count_trees(3, 1, &map)
+        * count_trees(5, 1, &map)
+        * count_trees(7, 1, &map)
+        * count_trees(1, 2, &map);
     sprint(result);
 }
 
@@ -41,22 +39,18 @@ pub fn count_trees(x_slope: usize, y_slope: usize, map: &Vec<Vec<Tile>>) -> i64 
 
 pub fn make_tile_map() -> Vec<Vec<Tile>> {
     let contents = read_file_to_vec::<String>("src/days/input/3");
-    let contents: Vec<Vec<Tile>> = 
-                    contents
-                    .into_iter()
-                    .map(|s| 
-                        s
-                        .chars()
-                        .map(|c| 
-                            match c {
-                                '#' => Tile::Tree,
-                                '.' => Tile::Open,
-                                _   => unreachable!(),
-                            }
-                        )
-                        .collect::<Vec<Tile>>()
-                        )
-                    .collect();
+    let contents: Vec<Vec<Tile>> = contents
+        .into_iter()
+        .map(|s| {
+            s.chars()
+                .map(|c| match c {
+                    '#' => Tile::Tree,
+                    '.' => Tile::Open,
+                    _ => unreachable!(),
+                })
+                .collect::<Vec<Tile>>()
+        })
+        .collect();
 
     contents
 }

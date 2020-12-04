@@ -4,7 +4,6 @@
 mod days;
 mod util;
 
-
 fn main() {
     days::day4::eval();
 }
