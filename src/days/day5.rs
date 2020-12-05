@@ -23,7 +23,6 @@ pub fn eval() {
     dprint(max);
 
     sprint("Part 2: ");
-    let mut looking = false;
     let mut start = 0;
     loop {
         if contents.contains(&start) {
