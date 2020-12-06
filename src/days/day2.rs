@@ -51,8 +51,18 @@ pub fn eval() {
     let contents: Vec<PasswordPolicy> = read_file_to_vec("src/days/input/2");
     let num = contents
         .into_iter()
+        .map(|pwp| pwp.validate_part1())
+        .filter(|&b| b)
+        .count();
+    sprint("Part 1: ");
+    sprint(num);
+
+    let contents: Vec<PasswordPolicy> = read_file_to_vec("src/days/input/2");
+    let num = contents
+        .into_iter()
         .map(|pwp| pwp.validate_part2())
         .filter(|&b| b)
         .count();
+    sprint("Part 2: ");
     sprint(num);
 }
