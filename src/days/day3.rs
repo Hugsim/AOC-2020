@@ -6,15 +6,17 @@ pub enum Tile {
     Open,
 }
 
-pub fn eval() {
+pub fn solve() -> (Option<i64>, Option<i64>) {
     let map = make_tile_map();
 
-    let result = count_trees(1, 1, &map)
+    let result1 = count_trees(3, 1, &map);
+    let result2 = count_trees(1, 1, &map)
         * count_trees(3, 1, &map)
         * count_trees(5, 1, &map)
         * count_trees(7, 1, &map)
         * count_trees(1, 2, &map);
-    sprint(result);
+
+    (Some(result1), Some(result2))
 }
 
 pub fn count_trees(x_slope: usize, y_slope: usize, map: &[Vec<Tile>]) -> i64 {

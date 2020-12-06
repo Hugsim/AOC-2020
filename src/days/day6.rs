@@ -2,7 +2,7 @@ use crate::util::*;
 
 use std::collections::HashSet;
 
-pub fn eval() {
+pub fn solve() -> (Option<i64>, Option<i64>) {
     let contents = read_file_to_string("src/days/input/6");
     let result1: usize = contents
         .split("\n\n")
@@ -25,10 +25,7 @@ pub fn eval() {
         })
         .sum();
 
-    sprint("Part 1:");
-    sprint(result1);
-    sprint("Part 2:");
-    sprint(result2);
+    (Some(result1 as i64), Some(result2 as i64))
 }
 
 fn calculate_answer1(vecs: &[Vec<char>]) -> usize {

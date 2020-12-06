@@ -1,21 +1,25 @@
 use crate::util::*;
 use std::str::FromStr;
 
-pub fn eval() {
+pub fn solve() -> (Option<i64>, Option<i64>) {
     let input = read_file_to_string("src/days/input/4");
     let input = input
         .split("\n\n")
         .map(|s| s.split('\n').collect::<Vec<&str>>()[..].join(" "));
 
-    let mut num_valid = 0;
+    let mut num_valid1 = 0;
+    let mut num_valid2 = 0;
     for s in input {
-        match s.parse::<PassportData>() {
-            Err(_) => {}
-            Ok(_) => num_valid += 1,
+        let s = s.parse::<PassportData>().unwrap();
+        if s.valid1() {
+            num_valid1 += 1;
+        }
+        if s.valid2() {
+            num_valid2 += 1;
         }
     }
 
-    sprint(num_valid);
+    (Some(num_valid1), Some(num_valid2))
 }
 
 #[derive(PartialEq, Eq, Debug, Clone)]
@@ -44,7 +48,17 @@ impl PassportData {
         }
     }
 
-    pub fn valid(&self) -> bool {
+    pub fn valid1(&self) -> bool {
+        !self.byr.is_empty()
+            && !self.iyr.is_empty()
+            && !self.eyr.is_empty()
+            && !self.hgt.is_empty()
+            && !self.hcl.is_empty()
+            && !self.ecl.is_empty()
+            && !self.pid.is_empty()
+    }
+
+    pub fn valid2(&self) -> bool {
         let byr_valid = !self.byr.is_empty()
             && match self.byr.parse::<i32>() {
                 Ok(v) => v >= 1920 && v <= 2002,
@@ -136,10 +150,7 @@ impl FromStr for PassportData {
                 _ => unreachable!(),
             }
         }
-        if res.valid() {
-            Ok(res)
-        } else {
-            Err(())
-        }
+
+        Ok(res)
     }
 }

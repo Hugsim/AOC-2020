@@ -1,6 +1,6 @@
 use crate::util::*;
 
-pub fn eval() {
+pub fn solve() -> (Option<i64>, Option<i64>) {
     let contents = read_file_to_vec::<String>("src/days/input/5");
     let mut contents: Vec<u32> = contents
         .iter()
@@ -18,23 +18,23 @@ pub fn eval() {
         .map(|a| vec_to_u32(&a[..]))
         .collect();
     contents.sort_unstable();
-    sprint("Part 1: ");
-    let max = &contents.iter().max().unwrap().clone();
-    dprint(max);
+    let max = contents.iter().max().unwrap().clone();
 
-    sprint("Part 2: ");
     let mut start = 0;
+    let mut sol2 = 0;
     loop {
         if contents.contains(&start) {
             break;
         }
         start += 1;
     }
-    for i in start..*max {
+    for i in start..max {
         if !contents.contains(&i) {
-            sprint(i)
+            sol2 = i;
         }
     }
+
+    (Some(max as i64), Some(sol2 as i64))
 }
 
 fn vec_to_u32(vec: &[u8]) -> u32 {
