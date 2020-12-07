@@ -18,7 +18,7 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
         .map(|a| vec_to_u32(&a[..]))
         .collect();
     contents.sort_unstable();
-    let max = contents.iter().max().unwrap().clone();
+    let max = *contents.iter().max().unwrap();
 
     let mut start = 0;
     let mut sol2 = 0;

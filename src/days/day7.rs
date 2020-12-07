@@ -1,5 +1,3 @@
-use petgraph::dot::*;
-use petgraph::graph::EdgeReferences;
 use petgraph::graph::*;
 use petgraph::stable_graph::*;
 use petgraph::*;

@@ -40,7 +40,7 @@ fn calculate_answer1(vecs: &[Vec<char>]) -> usize {
 
 fn calculate_answer2(vecs: &[Vec<char>]) -> usize {
     vecs.iter()
-        .map(|cs| cs.iter().map(|c| *c).collect::<HashSet<char>>())
+        .map(|cs| cs.iter().copied().collect::<HashSet<char>>())
         .fold_first(|acc, set| &acc & &set)
         .unwrap()
         .len()
