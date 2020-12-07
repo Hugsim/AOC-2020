@@ -1,6 +1,4 @@
-use petgraph::graph::*;
 use petgraph::stable_graph::*;
-use petgraph::*;
 
 use std::collections::HashMap;
 use std::collections::HashSet;
@@ -53,7 +51,7 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
 
 fn num_bags(graph: &StableGraph<String, i64>, from_node: NodeIndex) -> i64 {
     let mut sum = 1;
-    for node in graph.neighbors_directed(from_node, Incoming) {
+    for node in graph.neighbors_directed(from_node, petgraph::Incoming) {
         let weight = graph[graph.find_edge(node, from_node).unwrap()];
         let next_weight = num_bags(graph, node);
         sum += weight * next_weight;
