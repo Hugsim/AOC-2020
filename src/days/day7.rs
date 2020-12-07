@@ -49,7 +49,6 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
     let sol1 = reachable_nodes.len();
 
     let sol2 = num_bags(&g, start_node);
-    println!("{:?}", Dot::with_config(&g, &[Config::EdgeNoLabel]));
 
     (Some(sol1 as i64 - 1), Some(sol2 - 1))
 }
