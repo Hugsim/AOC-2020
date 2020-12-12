@@ -61,17 +61,17 @@ impl PassportData {
     pub fn valid2(&self) -> bool {
         let byr_valid = !self.byr.is_empty()
             && match self.byr.parse::<i32>() {
-                Ok(v) => v >= 1920 && v <= 2002,
+                Ok(v) => (1920..=2002).contains(&v),
                 Err(_) => false,
             };
         let iyr_valid = !self.iyr.is_empty()
             && match self.iyr.parse::<i32>() {
-                Ok(v) => v >= 2010 && v <= 2020,
+                Ok(v) => (2010..=2020).contains(&v),
                 Err(_) => false,
             };
         let eyr_valid = !self.eyr.is_empty()
             && match self.eyr.parse::<i32>() {
-                Ok(v) => v >= 2020 && v <= 2030,
+                Ok(v) => (2020..=2030).contains(&v),
                 Err(_) => false,
             };
         let hgt_valid = !self.hgt.is_empty()
@@ -82,7 +82,7 @@ impl PassportData {
                     } else {
                         return false;
                     };
-                    hgt >= 150 && hgt <= 193
+                    (150..=193).contains(&hgt)
                 }
                 "in" => {
                     let hgt = if let Ok(v) = self.hgt[0..2].parse::<i32>() {
@@ -90,7 +90,7 @@ impl PassportData {
                     } else {
                         return false;
                     };
-                    hgt >= 59 && hgt <= 76
+                    (59..=76).contains(&hgt)
                 }
                 _ => false,
             };
