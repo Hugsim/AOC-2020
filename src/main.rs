@@ -1,12 +1,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![feature(iterator_fold_self)]
+#![feature(drain_filter)]
 
 mod days;
 mod util;
 
 fn main() {
-    let solutions = days::day10::solve();
+    let solutions = days::day11::solve();
 
     if let Some(day1_solution) = solutions.0 {
         println!("Part 1: {}", day1_solution);
