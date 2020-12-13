@@ -10,7 +10,7 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
         .map(|(i, b)| (i, b.parse::<i64>().unwrap()))
         .collect::<Vec<(usize, i64)>>();
 
-    let mut times: Vec<(i64, i64, i64)> = buses
+    let times: Vec<(i64, i64, i64)> = buses
         .iter()
         .map(|(i, b)| (*b, (time / b + 1) * b - time, *i as i64))
         .collect();
@@ -21,21 +21,15 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
         .unwrap();
     let sol1 = min_time.0 * min_time.1;
 
-    // times.sort_by(|(x, _, _), (y, _, _)| y.cmp(x));
-
-    // Bruteforce loop, not feasible to
+    // Bruteforce loop, not feasible to calculate in a reasonable amount of time.
     // let mut time = 0;
     // let sol2 = loop {
     //     if times.iter().all(|(b, _, i)| (time + *i) % b == 0) {
     //         //println!("Found time: {}", time);
     //         break time;
-    //     } else {
-    //         //println!("Time {} didn't work", time);
     //     }
     //     time += 1;
     // };
-
-    dprint(&times);
 
     let input_to_website = times
         .iter()
