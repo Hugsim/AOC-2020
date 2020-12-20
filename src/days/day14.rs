@@ -128,10 +128,10 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
         match instr {
             Instruction::Update(mask) => {
                 dp.mask = mask;
-            },
+            }
             Instruction::Set(idx, val) => {
                 dp.set1(idx, val);
-            },
+            }
         }
     }
 
@@ -140,17 +140,16 @@ pub fn solve() -> (Option<i64>, Option<i64>) {
         sol1 += v;
     }
 
-
     let mut dp = DockingParameters::new();
 
     for instr in contents {
         match instr {
             Instruction::Update(mask) => {
                 dp.mask = mask;
-            },
+            }
             Instruction::Set(idx, val) => {
                 dp.set2(idx, val);
-            },
+            }
         }
     }
 
